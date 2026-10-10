@@ -1,5 +1,5 @@
 # AUTO/VF website
-- [ ] Create brand system, logo and optimized showroom imagery.
-- [ ] Build institutional pages, stock filters and vehicle details.
-- [ ] Build clearly provisional contact experience.
-- [ ] Verify navigation, filters, details, accessibility and layouts.
+- [x] Create brand system, logo and optimized showroom imagery.
+- [x] Build institutional pages, stock filters and vehicle details.
+- [x] Build clearly provisional contact experience.
+- [x] Verify navigation, filters, details, accessibility and layouts.

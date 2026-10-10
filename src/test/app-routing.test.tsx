@@ -14,4 +14,10 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+  it("matches vehicle details as a child of the stock outlet", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    const matches = router.matchRoutes('/estoque/porsche-911');
+    expect(matches.at(-1)?.routeId).toBe('/estoque/$slug');
+    expect(matches.at(-2)?.routeId).toBe('/estoque');
+  });
 });
