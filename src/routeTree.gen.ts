@@ -14,6 +14,7 @@ import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as EstoqueRouteImport } from './routes/estoque'
 import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as EstoqueSlugRouteImport } from './routes/estoque.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,41 +41,57 @@ const SobreRoute = SobreRouteImport.update({
   path: '/sobre',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EstoqueSlugRoute = EstoqueSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => EstoqueRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
-  '/estoque': typeof EstoqueRoute
+  '/estoque': typeof EstoqueRouteWithChildren
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
+  '/estoque/$slug': typeof EstoqueSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
-  '/estoque': typeof EstoqueRoute
+  '/estoque': typeof EstoqueRouteWithChildren
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
+  '/estoque/$slug': typeof EstoqueSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
-  '/estoque': typeof EstoqueRoute
+  '/estoque': typeof EstoqueRouteWithChildren
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
+  '/estoque/$slug': typeof EstoqueSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contato' | '/estoque' | '/servicos' | '/sobre'
+  fullPaths:
+    '/' | '/contato' | '/estoque' | '/servicos' | '/sobre' | '/estoque/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contato' | '/estoque' | '/servicos' | '/sobre'
-  id: '__root__' | '/' | '/contato' | '/estoque' | '/servicos' | '/sobre'
+  to: '/' | '/contato' | '/estoque' | '/servicos' | '/sobre' | '/estoque/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/contato'
+    | '/estoque'
+    | '/servicos'
+    | '/sobre'
+    | '/estoque/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContatoRoute: typeof ContatoRoute
-  EstoqueRoute: typeof EstoqueRoute
+  EstoqueRoute: typeof EstoqueRouteWithChildren
   ServicosRoute: typeof ServicosRoute
   SobreRoute: typeof SobreRoute
 }
@@ -116,13 +133,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SobreRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/estoque/$slug': {
+      id: '/estoque/$slug'
+      path: '/$slug'
+      fullPath: '/estoque/$slug'
+      preLoaderRoute: typeof EstoqueSlugRouteImport
+      parentRoute: typeof EstoqueRoute
+    }
   }
 }
+
+interface EstoqueRouteChildren {
+  EstoqueSlugRoute: typeof EstoqueSlugRoute
+}
+
+const EstoqueRouteChildren: EstoqueRouteChildren = {
+  EstoqueSlugRoute: EstoqueSlugRoute,
+}
+
+const EstoqueRouteWithChildren =
+  EstoqueRoute._addFileChildren(EstoqueRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContatoRoute: ContatoRoute,
-  EstoqueRoute: EstoqueRoute,
+  EstoqueRoute: EstoqueRouteWithChildren,
   ServicosRoute: ServicosRoute,
   SobreRoute: SobreRoute,
 }
