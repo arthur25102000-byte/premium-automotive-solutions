@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep shared brand layout and institutional sections in reusable components so home and dedicated pages remain consistent.
+- Keep provisional vehicle inventory in a browser-safe data module; no real business availability is implied.
+- Contact controls must explain unavailable delivery until real contact details and a delivery service are configured.
