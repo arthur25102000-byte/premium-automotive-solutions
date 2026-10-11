@@ -34,3 +34,6 @@ dist-ssr
 # material de referência e relatórios locais
 imagens/
 .impeccable/
+
+# Vercel
+.vercel

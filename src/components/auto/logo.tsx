@@ -1,7 +1,8 @@
-import logoFull from "@/assets/logo-autovf.png";
-import logoWordmark from "@/assets/logo-autovf-wordmark.png";
+import logoFull from "@/assets/logo-autovf-dark.png";
+import logoWordmark from "@/assets/logo-autovf-wordmark-dark.png";
 import logoVf from "@/assets/logo-vf.png";
 
+// versões escuras para o site branco; a barra continua dourada
 // full: com "Premium Cars" (rodapé); wordmark: só AUTO/VF, legível no cabeçalho; compact: monograma VF
 export function Logo({ variant = "full" }: { variant?: "full" | "wordmark" | "compact" }) {
   if (variant === "compact")

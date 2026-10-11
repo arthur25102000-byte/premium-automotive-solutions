@@ -6,7 +6,8 @@ import { nitro } from "nitro/vite";
 import viteReact from "@vitejs/plugin-react";
 
 export default defineConfig({
-  server: { port: 8080 },
+  // o projeto fica em /mnt/c (WSL): sem polling o Vite não percebe arquivos alterados
+  server: { port: 8080, watch: { usePolling: true, interval: 300 } },
   resolve: { alias: { "@": `${process.cwd()}/src` } },
   plugins: [
     tailwindcss(),
