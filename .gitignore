@@ -37,3 +37,4 @@ imagens/
 
 # Vercel
 .vercel
+.env*
