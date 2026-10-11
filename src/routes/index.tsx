@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from '@/components/auto/layout';
-import { Hero, Stock, About, Services, Process, Contact } from '@/components/auto/sections';
+import { Hero, Stock, About, Services, Process, Contact, SellBand } from '@/components/auto/sections';
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({ meta: [
@@ -13,5 +13,5 @@ export const Route = createFileRoute("/")({
   ] }),
 });
 function Index() {
-  return <Layout home><Hero /><Stock /><About /><Services /><Process /><Contact /></Layout>;
+  return <Layout home><Hero /><Stock /><SellBand /><About /><Services /><Process /><Contact /></Layout>;
 }

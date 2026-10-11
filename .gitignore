@@ -30,3 +30,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# material de referência e relatórios locais
+imagens/
+.impeccable/
